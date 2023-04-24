@@ -1,2 +1,3 @@
 /node_modules
 /backend/imp/imp.env
+/backend/imp/database.js
