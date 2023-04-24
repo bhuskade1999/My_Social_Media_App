@@ -40,7 +40,7 @@ return(
          <Route path ="/update/profile" element = {isAuthenticated ? <UpdateProfile/> : <Login/>}/>
          <Route path ="/update/password" element = {isAuthenticated ? <UpdatePassword/> : <Login/>}/>
          <Route path ="/forgot/password" element = {isAuthenticated ? <UpdatePassword/> : <ForgotPassword/>}/>
-         <Route path ="/password/reset/:token" element = {isAuthenticated ? <UpdatePassword/> : <ResetPassword/>}/> 
+         <Route path ="/password/reset/:token" element = { <ResetPassword/>}/> 
          <Route path="/user/:id" element={isAuthenticated ? <UserProfile /> : <Login />}       />
          <Route path="/search" element={isAuthenticated ? <Search /> : <Login />} />
          <Route path="*" element={<NotFound/>} />

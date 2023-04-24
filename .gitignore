@@ -1,4 +1,2 @@
 /node_modules
-node_modules
-/backend/model
-/backend/imp/imp.env
+/backend/env/.env

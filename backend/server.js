@@ -1,6 +1,6 @@
 const app = require("./app")
 const cloudinary = require("cloudinary")
-const { connectDatabase } = require("./imp/database")
+const { connectDatabase } = require("./env/database")
 
 connectDatabase()
 
