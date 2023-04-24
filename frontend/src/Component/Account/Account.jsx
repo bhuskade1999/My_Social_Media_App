@@ -10,12 +10,10 @@ import { useAlert } from "react-alert";
 import User from "../User/User"
 
 
-
 const Account = () =>
 {
 
     const dispatch = useDispatch()
-
     const alert = useAlert()
 
     const { user, loading: userLoading } = useSelector((state) => state.user)
@@ -126,7 +124,7 @@ const Account = () =>
                         user && user.followers.length > 0 ? (user.followers.map((follow) => (
                             <User
                                 key={follow._id}
-                                userId={follow._Id}
+                                userId={follow._id}
                                 name={follow.name}
                                 avatar={follow.avatar.url}
                             />
@@ -145,7 +143,7 @@ const Account = () =>
                         user && user.following.length > 0 ? (user.following.map((follows) => (
                             <User
                                 key={follows._id}
-                                userId={follows._Id}
+                                userId={follows._id}
                                 name={follows.name}
                                 avatar={follows.avatar.url}
                             />

@@ -2,6 +2,7 @@ import React from "react"
 import { useState } from "react";
 import "./Header.css"
 import { Link } from "react-router-dom"
+import {useSelector } from "react-redux"
 import {
   Home,
   HomeOutlined,
@@ -13,16 +14,20 @@ import {
   AccountCircleOutlined,
  
 } from "@mui/icons-material";
+import { Avatar, Typography } from "@mui/material";
 
 
 
 const Header = () => {
+
+  const { user } = useSelector((state) => state.user)
 
   const [tab, setTab] = useState(window.location.pathname)
 
  
 
   return (
+    <div className ="one"> 
   
     <div className="header">
       <Link to="/" onClick={() => setTab("/")}>
@@ -51,6 +56,18 @@ const Header = () => {
         }
 
       </Link>
+      
+
+    </div>
+
+
+    <div className="icons">
+      <Avatar className ="avatar" src={user.avatar.url}
+                sx={{ height: "2vmax", width: "2vmax" }}  alt={user.name}/> &nbsp;&nbsp; &nbsp;&nbsp;
+
+       <Typography className="userName" variant ="h6"> {user.name} </Typography>
+
+      </div>
 
     </div>
     

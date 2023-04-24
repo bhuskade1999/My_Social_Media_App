@@ -18,6 +18,8 @@ LoginFailure :(state,action)=>{
     state.isAuthenticated = false;
 },
 
+
+
 RegisterRequest :(state)=>{
     state.loading = true;
 },
@@ -35,6 +37,7 @@ RegisterFailure :(state,action)=>{
 },
 
 
+
 LoadUserRequest :(state)=>{
     state.loading = true;
 },
@@ -48,7 +51,6 @@ LoadUserFailure :(state,action)=>{
     // state.error = action.payload;
     state.isAuthenticated = false;
 },
-
 
 
 LogoutUserRequest :(state)=>{
@@ -68,13 +70,13 @@ LogoutUserFailure :(state,action)=>{
 },
 
 
-
 clearErrors:(state) =>{
     state.error = null;
 }
 
 })
 
+//================================= Post Of Following =========================================
 
 export const postOfFollowingReducer = createReducer(initialState,{
     postOfFollowingRequest :(state)=>{
@@ -93,6 +95,8 @@ export const postOfFollowingReducer = createReducer(initialState,{
         state.error = null;
     }
 })   
+
+
 
 //=======================All User ================================================
 
@@ -127,9 +131,6 @@ export const allUsersReducer = createReducer(initialState,{
         state.error = null;
     }
 }) 
-
-
-
 
 
 

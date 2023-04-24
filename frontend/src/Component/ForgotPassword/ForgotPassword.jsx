@@ -30,7 +30,7 @@ const ForgotPassword = () => {
   return (
     <div className="forgotPassword">
       <form className="forgotPasswordForm" onSubmit={submitHandler}>
-        <Typography variant="h3" style={{ padding: "2vmax" }}>Social Aap</Typography>
+        <Typography variant="h3" style={{ padding: "2vmax" }}>Social Media</Typography>
 
         <input className="forgotPasswordInputs" type="email" placeholder="Enter email" value={email} required
           onChange={(e) => setEmail(e.target.value)} />

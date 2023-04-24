@@ -47,6 +47,9 @@ const {data} = await api.post("/api/v1/register",{name, email, password , avatar
         "Content-Type":"application/json",
     },
 })
+localStorage.setItem("auth-token", data.token);
+Cookies.set("authorization", data.token, { expires: 86400 });
+
 
 dispatch({
     type:"RegisterSuccess",
@@ -128,7 +131,7 @@ dispatch({
 
 }
 
-//==================================Forgot Password ==================================
+//================================== Forgot Password ==================================
 
 export const forgotPassword = (email)=>async (dispatch)=>{
     try{

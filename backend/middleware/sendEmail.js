@@ -12,6 +12,7 @@ exports.sendEmail = async (options) =>{
 //  service:process.env.SMPT_SERVISE
 
 //  })
+
 var transporter = nodeMailer.createTransport({
     host: "sandbox.smtp.mailtrap.io",
     port: 2525,
@@ -28,7 +29,6 @@ const mailOption ={
     subject: options.subject,
     text: options.message
 }
-
 
 await transporter.sendMail(mailOption)
 }

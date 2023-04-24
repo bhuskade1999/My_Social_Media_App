@@ -190,7 +190,7 @@ const Post = ({
                     <Typography variant="h4">Update Caption</Typography>
                     <form className="commentForm" onSubmit={updateCaptionHandler}>
                         <input type="text" value={captionValue} onChange={(e) => setCaptionValue(e.target.value)}
-                            placeholder="capion here here.." required />
+                            placeholder="caption here here.." required />
                         <Button type="submit" variant="contained"> Update </Button>
 
                     </form>

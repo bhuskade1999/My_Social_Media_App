@@ -1,7 +1,6 @@
 const User = require("../model/user");
 const Post = require("../model/post");
 const {sendEmail} = require("../middleware/sendEmail");
-const bcrypt = require("bcrypt");
 const crypto = require('crypto');
 const cloudinary = require("cloudinary")
 
@@ -42,6 +41,7 @@ try{
 }
 
 //=================================== Login User ==========================
+
 
 exports.login = async (req,res)=>{
     try{
@@ -94,15 +94,27 @@ exports.logout = async (req,res)=>{
 
 
 
-
-
-
     }catch(err){
         res.status(500).send({success :false,message:err.message});
     }
 }
 
 
+//================= My  Profile Details ==========================
+
+exports.myProfile = async (req,res)=>{
+  try{
+  
+      const user = await User.findById(req.user._id).populate("posts followers following")
+  
+      res.status(200).json({success:true, user})
+  
+  }catch(err){
+      res.status(500).send({success :false});
+  }
+  
+  }
+  
 
 
 //================================= Follow User =========================================
@@ -111,7 +123,7 @@ exports.followUser = async (req,res) => {
 
 try{
 
-const userFollow =await User.findById(req.params.id);
+const userFollow = await User.findById(req.params.id);
 const loggedInUser = await User.findById(req.user._id)
 if(!userFollow){
     return res.status(404).json({success:false, message:"User does not Exists"})
@@ -150,6 +162,49 @@ await loggedInUser.save()
 
 
 
+
+//========================================= Update Profile =================================
+
+
+exports.updateProfile = async (req,res)=>{
+  try{
+  
+      const user = await User.findById(req.user._id)
+  
+      const {name,email,avatar} = req.body
+  
+      if(name){
+      user.name = name
+     }
+  
+     if(email){
+      user.email = email
+     }
+  
+      
+     //avatar todo
+     if(avatar){
+       await cloudinary.v2.uploader.destroy(user.avatar.public_id)
+       const myCloud = await cloudinary.v2.uploader.upload(avatar,{
+          folder:"avatars"
+       })
+       user.avatar.public_id = myCloud.public_id
+       user.avatar.url = myCloud.secure_url;
+     }
+  
+     await user.save()
+     res.status(200).json({success:true, message:"profile updated successfully"})
+  
+  
+  }catch(err){
+      res.status(500).send({success :false,message:err.message});
+  }
+  
+  
+  }
+  
+
+
 //========================================= Update Passwords =================================
 
 exports.updatePassword = async (req,res)=>{
@@ -179,47 +234,6 @@ res.status(200).json({success:true, message:"Password Updated Successfully"})
 
 }
 
-
-
-//========================================= Update Profile =================================
-
-
-exports.updateProfile = async (req,res)=>{
-try{
-
-    const user = await User.findById(req.user._id)
-
-    const {name,email,avatar} = req.body
-
-    if(name){
-    user.name = name
-   }
-
-   if(email){
-    user.email = email
-   }
-
-    
-   //avatar todo
-   if(avatar){
-     await cloudinary.v2.uploader.destroy(user.avatar.public_id)
-     const myCloud = await cloudinary.v2.uploader.upload(avatar,{
-        folder:"avatars"
-     })
-     user.avatar.public_id = myCloud.public_id
-     user.avatar.url = myCloud.secure_url;
-   }
-
-   await user.save()
-   res.status(200).json({success:true, message:"profile updated successfully"})
-
-
-}catch(err){
-    res.status(500).send({success :false,message:err.message});
-}
-
-
-}
 
 
 
@@ -309,20 +323,6 @@ for(let i = 0; i < allPosts.length;i++){
 
 
 
-//================= My  Profile Details ==========================
-
-exports.myProfile = async (req,res)=>{
-try{
-
-    const user = await User.findById(req.user._id).populate("posts followers following")
-
-    res.status(200).json({success:true, user})
-
-}catch(err){
-    res.status(500).send({success :false});
-}
-
-}
 
 
 //============================== get Users Profile =============================
@@ -418,7 +418,7 @@ exports.getUserPosts = async (req,res)=>{
 
 
 
-//====================================== Forgate Paswords=============================
+//====================================== Forgote Passwords=============================
 
 exports.forgotPassword = async (req,res)=>{
 try{
@@ -472,7 +472,7 @@ try{
 }
 
 
-//======================================== reset Password =======
+//======================================== reset Password ===============================
 
 exports.resetPassword = async (req, res) => {
     try {

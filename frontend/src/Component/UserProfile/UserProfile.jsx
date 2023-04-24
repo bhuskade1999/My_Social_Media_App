@@ -183,9 +183,9 @@ const UserProfile = () => {
                         user && user.following.length > 0 ? (user.following.map((follows) => (
                             <User
                                 key={follows._id}
-                                userId={follows._Id}
+                                userId={follows._id}
                                 name={follows.name}
-                                avatar={"follows.avatar.url"}
+                                avatar={follows.avatar.url}
                             />
                         ))) : (<Typography style={{ marin: "2vmax" }}>You Have Not following anyone</Typography>)
                     }
