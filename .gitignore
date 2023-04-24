@@ -1,4 +1,4 @@
 /node_modules
 node_modules
-backend/imp/imp.env
+/backend/model
 /backend/imp/imp.env
