@@ -132,7 +132,7 @@ export const createNewPost= (caption,image)=> async (dispatch)=>{
             headers: {
                 "Content-Type": "application/json",
             },
-        }) 
+        })   
         
         dispatch({
             type: "updateCaptionSuccess",
