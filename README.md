@@ -9,3 +9,16 @@
  - Mongodb
  - ReactJs
  - Cloudinary
+
+
+
+## Features
+- User authentication and authorization using JWT tokens
+- Create, read, update, and delete  posts
+- Upload images to posts
+- Search for users
+- Responsive design for mobile and desktop devices
+- Error handling and validation using React and Express
+- MongoDB Atlas database for data storage
+- used Cloudinary to store images/videos
+
