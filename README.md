@@ -1,6 +1,6 @@
 # Socail Media App || [View Link](https://my-social-media-apps2.netlify.app/)
 
-### This project is based on social media like Instagram where user can create account, create post, like post, follow user and lots of more functionality which provide other social media platform . It is MERN stack project where i have used Authentication and Authorisation and Mongodb and Cloudinary to store data and files.
+###      This project is based on social media like Instagram where user can create account, create post, like post, follow user and lots of more functionality which provide other social media platform . It is MERN stack project where i have used Authentication and Authorisation and Mongodb and Cloudinary to store data and files.
 ##
 
 ### Teck Stack :
