@@ -12,6 +12,10 @@
 
 https://my-social-media-apps2.netlify.app/
 
+ [FunctionUp](https://my-social-media-apps2.netlify.app/)
+
+
+
 ## Features
 - User authentication and authorization using JWT tokens
 - Create, read, update, and delete  posts
